@@ -1,42 +1,42 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-} /*Ovo ponoviti*/
+  overflow-x: hidden;
+}
 
 body {
-  font-family: "rubik", sans-serif;
+  font-family: "Rubik", sans-serif;
   line-height: 1;
+  font-weight: 400;
   color: #555;
+
+  overflow-x: hidden;
 }
 
-*:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.8rem rgb(230, 125, 34, 0.5);
-}
+/**************************/
+/* GENRAL REUSABLE COMPONENTS */
+/**************************/
 
 .container {
+  /* 1140px */
   max-width: 120rem;
-  margin: 0 auto;
   padding: 0 3.2rem;
+  margin: 0 auto;
 }
 
 .grid {
   display: grid;
-  row-gap: 9.6rem;
   column-gap: 6.4rem;
+  row-gap: 9.6rem;
 }
 
 .grid:not(:last-child) {
   margin-bottom: 9.6rem;
-}
-
-.grid--center-v {
-  align-items: center;
 }
 
 .grid--2-cols {
@@ -44,82 +44,77 @@ body {
 }
 
 .grid--3-cols {
-  grid-template-columns: 1.5fr 1.5fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .grid--4-cols {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* HEADER REUSABE */
-
-.main-nav-list {
-  display: flex;
-  gap: 4.8rem;
-  list-style: none;
+.grid--center-v {
   align-items: center;
 }
 
-.main-nav-link:link,
-.main-nav-link:visited {
-  text-decoration: none;
-  font-size: 1.8rem;
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
   color: #333;
-  display: inline-block;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.6rem;
   font-weight: 500;
-  transition: all 0.3s;
-}
-
-.main-nav-link:hover,
-.main-nav-link:active {
   color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
 }
 
-.main-nav-link.nav-cta:link,
-.main-nav-link.nav-cta:visited {
-  padding: 1.2rem 2.4rem;
-  background-color: #e67e22;
-  border-radius: 9px;
-  color: #fff;
-}
-
-.main-nav-link.nav-cta:hover,
-.main-nav-link.nav-cta:active {
-  background-color: #cf771f;
-}
-
-/* HERO REUSABLE */
 .btn,
 .btn:link,
 .btn:visited {
   display: inline-block;
+
   text-decoration: none;
   font-size: 2rem;
   font-weight: 600;
   padding: 1.6rem 3.2rem;
   border-radius: 9px;
-  transition: all 0.3s;
 
+  /* Only necessary for .btn */
+  border: none;
   cursor: pointer;
   font-family: inherit;
-  border: none;
-}
 
-.btn--form {
-  background-color: #45260a;
-  padding: 1.2rem;
-  align-self: end;
-  color: #f9f2e9;
-}
-
-.btn--form:hover {
-  background-color: #fff;
-  color: #555;
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
 }
 
 .btn--full:link,
 .btn--full:visited {
-  background-color: #e67322;
+  background-color: #e67e22;
   color: #fff;
 }
 
@@ -130,8 +125,8 @@ body {
 
 .btn--outline:link,
 .btn--outline:visited {
-  color: #555;
   background-color: #fff;
+  color: #555;
 }
 
 .btn--outline:hover,
@@ -140,23 +135,73 @@ body {
   box-shadow: inset 0 0 0 3px #fff;
 }
 
-.heading-primary {
-  font-size: 5.2rem;
-  font-weight: 700;
-  color: #333;
-  letter-spacing: -0.5px;
-  line-height: 1.05;
-  margin-bottom: 3.2rem;
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
 }
 
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+/* HELPER/SETTINGS CLASSES */
 .margin-right-sm {
   margin-right: 1.6rem !important;
 }
 
-strong {
-  font-weight: 500;
-}
-
 .margin-bottom-md {
   margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+
+strong {
+  font-weight: 500;
 }
