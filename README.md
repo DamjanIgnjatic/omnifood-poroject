@@ -15,4 +15,4 @@ This is a single-page website for meal ordering, which was created as the final 
 
 # Project image
 
-![Project Sreenshot]('./img/project-image.png')
+![Project Sreenshot](./img/project-image.png)
